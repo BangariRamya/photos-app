@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+.Pagination {
+  /* display: flex; */
+  /* align-items: center; */
+  /* margin: 0 auto; */
+  margin-left: 35%;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 700px) {
+  
+  .card {
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: auto;
+  }
+
+  .Pagination {
+    margin-left: 5%;
+  }
+
+}
+
+
+@media screen and (min-width: 700px) {
+  
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .Pagination {
+    margin-left: 20%;
+  }
+
+}
+
+.card{
+  margin-top: 20px;
+}
+
