@@ -1,57 +1,61 @@
-import { Card, CardImg, CardBody, CardTitle, Col } from "reactstrap";
-
-const Photo = ({photos}) => {
-
-  return (
-    
-     <Col xs="12" sm="6" md="4" xl="3">   
-      <Card className="card">
-        <CardImg
-          alt="Photo image"
-          // src="https://picsum.photos/318/180"
-          src={photos.thumbnailUrl}
-          top width="100%"
-        />
-        <CardBody>
-
-          <CardTitle tag="h5">{photos.title}</CardTitle> 
-
-        </CardBody>
-      </Card>
-    </Col>
-    
-  );
-};
-export default Photo;
-
-
 // import { Card, CardImg, CardBody, CardTitle, Col } from "reactstrap";
 
-// const Photo = (props) => {
-
-//   const {photos} = props;
-//   const {thumbnailUrl, title} = photos;
+// const Photo = ({photos}) => {
 
 //   return (
     
 //      <Col xs="12" sm="6" md="4" xl="3">   
-//       <Card>
+//       <Card className="card">
 //         <CardImg
 //           alt="Photo image"
 //           // src="https://picsum.photos/318/180"
-//          src={thumbnailUrl}
-//           top
-//           width="100%"
+//           src={photos.thumbnailUrl}
+//           top width="100%"
+    
 //         />
 //         <CardBody>
 
-//           <CardTitle tag="h5">{title}</CardTitle>
-          
+//           <CardTitle tag="h5">{photos.title}</CardTitle> 
+
 //         </CardBody>
 //       </Card>
-//       </Col>
+//     </Col>
     
 //   );
 // };
 // export default Photo;
+
+
+import { Card, CardImg, CardBody, CardTitle, Col } from "reactstrap";
+
+const Photo = (props) => {
+
+  const {photos, onPhotoClick} = props;
+  const {thumbnailUrl, title, url} = photos;
+
+  return (
+    
+     <Col xs="12" sm="6" md="4" xl="3">   
+      <Card>
+        <CardImg
+          alt="Photo image"
+          // src="https://picsum.photos/318/180"
+         src={thumbnailUrl}
+          top width="100%"
+          onClick={()=>{
+            onPhotoClick({title, url});
+          }}
+          // onClick={()=>console.log('clicked')}
+        />
+        <CardBody>
+
+          <CardTitle tag="h5">{title}</CardTitle>
+          
+        </CardBody>
+      </Card>
+      </Col>
+    
+  );
+};
+export default Photo;
 

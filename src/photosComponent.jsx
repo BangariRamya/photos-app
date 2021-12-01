@@ -8,12 +8,14 @@ import {
   Row,
   Spinner,
 } from "reactstrap";
+import ImagePreview from "./imagePreview";
 
 const Photos = () => {
   const [state, setState] = useState([]);  //This is for data we want to change and update, while fetching(refer below useEffect)
   const [spin, setSpin] = useState(false);
   const [page, setPage] = useState(1);
-  
+  const [imagePreviewOpen, setImagePreviewOpen] = useState(false);
+  const [currentImagePreview, setCurrentImagePreview] = useState(null);
 
   const pageUpdate = (num) => {
     setPage(num);
@@ -63,9 +65,26 @@ const Photos = () => {
 
         }, [page]);  //gives warning as : React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
   */
+  
+
+  const showImagePreview = (photoObject) => {
+    // console.log(photoObject);
+    setImagePreviewOpen(true);
+    setCurrentImagePreview(photoObject); 
+      
+  }
+
+  const hideImagePreview = () => {
+    setImagePreviewOpen(false);
+    setCurrentImagePreview(null); 
+  }
+
+
 
   return (
     <div>
+
+      {imagePreviewOpen && <ImagePreview title={currentImagePreview.title} url={currentImagePreview.url} previewClose={hideImagePreview}/>}
 
       <h1>Photos App</h1>
 
@@ -74,7 +93,7 @@ const Photos = () => {
       <Container>
         <Row>
           {state.map((item) => (
-            <Photo key={item.id} photos={item} />
+            <Photo key={item.id} photos={item} onPhotoClick={showImagePreview} />
           ))}
         </Row>
       </Container>
