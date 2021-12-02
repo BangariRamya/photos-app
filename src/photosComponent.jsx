@@ -9,6 +9,7 @@ import {
   Spinner,
 } from "reactstrap";
 import ImagePreview from "./imagePreview";
+import Form from "./form";  
 
 const Photos = () => {
   const [state, setState] = useState([]);  //This is for data we want to change and update, while fetching(refer below useEffect)
@@ -16,6 +17,8 @@ const Photos = () => {
   const [page, setPage] = useState(1);
   const [imagePreviewOpen, setImagePreviewOpen] = useState(false);
   const [currentImagePreview, setCurrentImagePreview] = useState(null);
+  // const [formOpen, setFormOpen] = useState(false);
+  // const [form, setForm] = useState(null);
 
   const pageUpdate = (num) => {
     setPage(num);
@@ -79,15 +82,27 @@ const Photos = () => {
     setCurrentImagePreview(null); 
   }
 
+  // const displayForm = (formObject) => {
+  //     setFormOpen(true);
+  //     setForm(formObject);
+  //     // console.log("aaa")
+  // }
+
 
 
   return (
     <div>
-
+     
       {imagePreviewOpen && <ImagePreview title={currentImagePreview.title} url={currentImagePreview.url} previewClose={hideImagePreview}/>}
 
       <h1>Photos App</h1>
 
+      <Form />
+
+      {/* <Button onClick={displayForm} onButtonClick={displayForm}>New Photo</Button> */}
+
+      {/* <Button onClick={() => {displayForm({title, url, thumbnailUrl})}}>New Photo</Button> */}
+      
       {/* <Spinner style={{alignItem: "left"}}>Loading...</Spinner>       */}
       {spin && <Spinner>Loading...</Spinner>}
       <Container>
